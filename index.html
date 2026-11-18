@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASAHA | Santé mentale et développement personnel</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f6;
+    color: #263b39;
+    line-height: 1.8;
+}
+
+header {
+    background: linear-gradient(135deg, #245b55, #438c7d);
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+nav {
+    background: white;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 2px 8px #0000000c;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav a {
+    text-decoration: none;
+    color: #245b55;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 20px #00000008;
+}
+
+h2 {
+    color: #28645a;
+    margin-bottom: 15px;
+}
+
+.intro {
+    text-align: center;
+}
+
+.intro p {
+    margin-bottom: 12px;
+}
+
+button {
+    background: #327b6e;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #245b55;
+}
+
+.question {
+    padding: 18px 0;
+    border-bottom: 1px solid #e8eeec;
+}
+
+.question p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    background: #f3f7f5;
+    padding: 9px 12px;
+    border-radius: 8px;
+    margin: 7px 0;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+#result {
+    display: none;
+}
+
+.score {
+    font-size: 42px;
+    font-weight: bold;
+    color: #327b6e;
+    text-align: center;
+    margin: 15px;
+}
+
+.result-box {
+    background: #edf6f2;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #245b55;
+    color: white;
+    margin-top: 40px;
+}
+
+small {
+    color: #687b76;
+}
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        margin: 0 5px;
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MASAHA 🌿</h1>
+    <p>Votre espace pour comprendre vos émotions, prendre soin de votre santé mentale et évoluer personnellement.</p>
+</header>
+
+<nav>
+    <a href="#home">Accueil</a>
+    <a href="#test">Évaluation</a>
+    <a href="#advice">Conseils</a>
+</nav>
+
+<div class="container">
+
+<section class="card intro" id="home">
+    <h2>Bienvenue dans votre espace personnel</h2>
+    <p>
+        Parfois, nous avons simplement besoin de faire une pause
+        pour comprendre ce que nous ressentons.
+        MASAHA vous aide à réfléchir à votre bien-être
+        et à identifier les domaines qui méritent votre attention.
+    </p>
+    <p>Prenez une grande respiration et commencez votre parcours vers une meilleure connaissance de vous-même.</p>
+    <a href="#test"><button>Commencer l'évaluation</button></a>
+</section>
+
+<section class="card" id="test">
+    <h2>🧠 Évaluation du bien-être mental</h2>
+    <p>Répondez aux questions en fonction de ce que vous avez ressenti au cours des deux dernières semaines.</p>
+
+    <form id="quiz">
+        <div id="questions"></div>
+        <button type="submit">Voir mes résultats</button>
+    </form>
+</section>
+
+<section class="card" id="result">
+    <h2>📊 Vos résultats personnels</h2>
+    <div class="score" id="score"></div>
+    <h3 id="level"></h3>
+
+    <div class="result-box">
+        <p id="description"></p>
+    </div>
+
+    <h3 style="margin-top:20px">🌱 Conseils personnalisés</h3>
+    <ul id="tips"></ul>
+
+    <button onclick="window.print()">Enregistrer ou imprimer mes résultats</button>
+    <button onclick="location.reload()">Refaire l'évaluation</button>
+</section>
+
+<section class="card" id="advice">
+    <h2>🌸 De petites habitudes pour une meilleure vie</h2>
+
+    <div class="result-box">
+        <h3>1. Prenez soin de votre sommeil</h3>
+        Essayez de conserver des horaires réguliers de coucher et de réveil.
+    </div>
+
+    <div class="result-box">
+        <h3>2. Bougez chaque jour</h3>
+        Une marche de 20 minutes peut contribuer à améliorer votre humeur.
+    </div>
+
+    <div class="result-box">
+        <h3>3. Exprimez vos émotions</h3>
+        Écrivez ce que vous ressentez ou parlez à une personne de confiance.
+    </div>
+
+    <div class="result-box">
+        <h3>4. Ne vous comparez pas aux autres</h3>
+        Concentrez-vous sur votre propre progression, même si elle est petite.
+    </div>
+
+    <div class="result-box">
+        <h3>5. Accordez-vous du temps</h3>
+        Pratiquez une activité que vous aimez, sans culpabiliser.
+    </div>
+</section>
+
+<section class="card">
+    <h2>💚 Un message pour vous</h2>
+    <p>
+        Vous n'êtes pas obligé d'aller bien tout le temps.
+        Demander de l'aide n'est pas une faiblesse,
+        et prendre soin de soi n'est pas de l'égoïsme.
+        Vous méritez le repos, le respect et le soutien.
+    </p>
+</section>
+
+</div>
+
+<footer>
+    <p>MASAHA © 2026</p>
+    <small>Cette évaluation est destinée à la sensibilisation et à la réflexion personnelle. Elle ne constitue pas un diagnostic médical ou psychologique.</small>
+</footer>
+
+<script>
+
+const questions = [
+    "Comment décririez-vous votre humeur au cours des deux dernières semaines ?",
+    "Ressentez-vous fréquemment du stress ou de l'anxiété ?",
+    "Comment est votre sommeil ces derniers temps ?",
+    "Avez-vous suffisamment d'énergie pour vos activités quotidiennes ?",
+    "Prenez-vous toujours plaisir aux activités que vous aimiez auparavant ?",
+    "Comment percevez-vous votre valeur personnelle et vos capacités ?",
+    "Lorsque vous rencontrez un problème, arrivez-vous à y faire face ?",
+    "Avez-vous des personnes sur lesquelles vous pouvez compter ?",
+    "Arrivez-vous à équilibrer vos responsabilités et votre temps personnel ?",
+    "Avez-vous des objectifs clairs que vous souhaitez atteindre ?"
+];
+
+const options = [
+    ["Très bonne", "Bonne", "Moyenne", "Difficile"],
+    ["Rarement", "Parfois", "Souvent", "Toujours"],
+    ["Bon et régulier", "Acceptable", "Perturbé", "Très mauvais"],
+    ["Oui, généralement", "La plupart du temps", "Rarement", "Je manque d'énergie"],
+    ["Oui, normalement", "Parfois", "Peu", "Presque plus"],
+    ["Je m'apprécie", "J'apprends à m'accepter", "Je doute souvent de moi", "Je me sens sans valeur"],
+    ["Calmement et avec confiance", "Après réflexion", "Avec difficulté", "Je me sens impuissant(e)"],
+    ["Oui, certainement", "Une ou deux personnes", "Rarement", "Je ne ressens pas ce soutien"],
+    ["Oui, bien", "Dans une certaine mesure", "Difficilement", "Il n'y a pas d'équilibre"],
+    ["Oui, clairement", "J'ai quelques idées", "Je cherche encore", "Je ne sais pas ce que je veux"]
+];
+
+const points = [3, 2, 1, 0];
+
+const questionArea = document.getElementById("questions");
+
+questions.forEach((question, i) => {
+    let html = `<div class="question">
+        <p>${i + 1}. ${question}</p>`;
+
+    options[i].forEach((option, j) => {
+        html += `
+        <label>
+            <input type="radio" name="q${i}" value="${points[j]}" required>
+            ${option}
+        </label>`;
+    });
+
+    html += `</div>`;
+    questionArea.innerHTML += html;
+});
+
+document.getElementById("quiz").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let total = 0;
+
+    for (let i = 0; i < questions.length; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+
+        if (!answer) {
+            alert("Veuillez répondre à toutes les questions.");
+            return;
+        }
+
+        total += Number(answer.value);
+    }
+
+    const percentage = Math.round((total / 30) * 100);
+
+    let level = "";
+    let description = "";
+    let tips = [];
+
+    if (percentage >= 80) {
+        level = "🌟 Indicateurs positifs";
+        description = "Vos réponses indiquent plusieurs aspects positifs de votre bien-être. Continuez à entretenir les habitudes qui vous font du bien.";
+        tips = [
+            "Maintenez vos habitudes de vie saines.",
+            "Continuez à développer vos compétences.",
+            "Accordez-vous du temps pour vous reposer et vous divertir.",
+            "Entretenez vos relations sociales."
+        ];
+    } else if (percentage >= 55) {
+        level = "🌱 Situation intermédiaire";
+        description = "Vous présentez plusieurs aspects positifs, mais certains domaines pourraient bénéficier de davantage d'attention.";
+        tips = [
+            "Essayez de régulariser vos horaires de sommeil.",
+            "Pratiquez la marche ou une activité physique.",
+            "Consacrez chaque jour un moment à vous-même.",
+            "Parlez à une personne en qui vous avez confiance."
+        ];
+    } else if (percentage >= 30) {
+        level = "💚 Vous méritez davantage d'attention";
+        description = "Vous traversez peut-être une période difficile ou faites face à certaines pressions. Prenez soin de vos besoins et demandez du soutien si nécessaire.";
+        tips = [
+            "Réduisez la pression que vous vous imposez.",
+            "Divisez les grandes tâches en petites étapes.",
+            "Ne vous isolez pas des personnes qui vous soutiennent.",
+            "Envisagez de consulter un professionnel si votre mal-être persiste."
+        ];
+    } else {
+        level = "🤍 Prenez soin de vous";
+        description = "Vos réponses indiquent des difficultés qui méritent une attention particulière. Cette évaluation ne permet pas de poser un diagnostic, mais il est important de ne pas rester seul(e) face à ces émotions.";
+        tips = [
+            "Contactez aujourd'hui une personne de confiance.",
+            "Envisagez de demander l'aide d'un professionnel de santé mentale.",
+            "Prenez soin de votre sommeil, de votre alimentation et de votre repos.",
+            "Si vous êtes en danger ou pensez à vous faire du mal, contactez immédiatement les services d'urgence ou une personne proche."
+        ];
+    }
+
+    document.getElementById("score").textContent = percentage + "%";
+    document.getElementById("level").textContent = level;
+    document.getElementById("description").textContent = description;
+
+    const tipsList = document.getElementById("tips");
+    tipsList.innerHTML = "";
+
+    tips.forEach(tip => {
+        const li = document.createElement("li");
+        li.textContent = tip;
+        tipsList.appendChild(li);
+    });
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("result").scrollIntoView({
+        behavior: "smooth"
+    });
+});
+
+</script>
+
+</body>
+</html>
